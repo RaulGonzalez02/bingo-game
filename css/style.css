@@ -1,0 +1,131 @@
+@font-face {
+    font-family:"retro";
+    src: url("../assets/fonts/Retro60Prime.ttf");
+}
+@font-face {
+    font-family: "buttons";
+    src: url("../assets/fonts/Retrock.ttf");
+}
+body {
+    background-color: #0263C1;
+    font-variant: small-caps;
+    color: rgb(247, 169, 1);
+    font-family: retro;
+}
+
+.container {
+    width: 1080px;
+    margin: 0 auto;
+}
+
+.title {
+    background-color: #2b7dcfd8;
+    text-align: center;
+    padding-top: 0;
+    margin-top:0 ;
+}
+.portada{
+    background-image: url("../assets/images/tipos-jogos-bingo.jpg");
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 650px;
+    background-size: cover;
+    position: relative;
+}
+.portada__button{
+    position: absolute;
+    top: 300px;
+    left: 45%;
+    width: 150px;
+    height: 50px;
+    font-size: 1.25rem;
+    border-radius: 25%;
+    border: #0263C1 solid 3px;
+    font-weight: bold;
+    font-variant: small-caps;
+    transition-duration: 0.5s;
+    background-color: #5e99d4;
+    color: rgb(247, 169, 1);
+    font-family: retro;
+}
+.portada__button:hover{
+    transform: scale(1.5) ;
+    background-color: rgba(11, 216, 11, 0.459);
+}
+.section {
+    background-color: #5e99d4d8;
+    padding: 5px;
+    margin: 15px;
+}
+
+.tablero {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    place-items: center;
+}
+
+.bolas {
+    padding: 25px;
+    background-color: white;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.bolas__jugadas {
+    background-color: rgba(11, 216, 11, 0.459);
+    border: 1px solid rgb(247, 169, 1);
+}
+
+.carton {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.num_carton {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #000;
+    font-size: 24px;
+    font-weight: bold;
+}
+.num_carton--jugado{
+    border: 1px solid rgba(11, 216, 11, 0.459);
+    border-radius: 50%;
+    background-color: rgba(11, 216, 11, 0.459);
+}
+.botonera{
+    display: flex;
+    justify-content: space-evenly;
+}
+.iniciar__juego,.cambiar__carton,
+.reiniciar_juegos,.comprobar_juego,
+.pedir_bola{
+    width: 150px;
+    height: 40px;
+    border-radius: 25%;
+    border: #0263C1 solid 2px;
+    font-weight: bold;
+    font-variant: small-caps;
+    font-family: retro;
+    transition-duration: 0.5s;
+}
+.iniciar__juego:hover,.cambiar__carton:hover,
+.reiniciar_juegos:hover,.comprobar_juego:hover,
+.pedir_bola:hover{
+    transform: scale(1.1);
+    color: rgb(247, 169, 1);
+    background-color: rgba(11, 216, 11, 0.459);
+}
+.ocultar{
+    display: none;
+}
+.mostrar{
+    display: inline-block;
+}

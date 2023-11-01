@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <header class="header" id="header">
+            <h1 class="title" id="title">Bienvenido al Bingo</h1>
+        </header>
+        <div class="portada">
+            <button class="portada__button" id="mostrarInicio">
+                Jugar
+            </button>
+        </div>
+        <main class="main ocultar" id="main">
+            <h2 class="title">Bolas Jugadas</h2>
+            <section class="tablero section" id="tablero">
+                <!-- Insertar el tabler vacio para las bolas del bingo
+                    Las bolas -> clase bolas
+                    Bolas que han saldio -> bolas__jugadas
+                -->
+<!--                 <div class="bolas bolas__jugadas">1</div>
+ -->            </section>
+            <h2 class="title">Cartones</h2>
+            <section class="carton_jugador section" id="carton_jugador">
+                <h3 class="title">Jugador</h3>
+                <div class="carton">
+                    <!-- Insertar aqui los numeros del carton, carton conformado por 12 numeros
+                    La clase de inicio para el carton es ->num_carton
+                    Una vez salida la bola la clase es -> num_carton--jugado
+                -->
+<!--                 <div class="num_carton num_carton--jugado">1</div>
+ -->            </section>
+            <section class="carton_maquina section" id="carton_maquina">
+                <h3 class="title">Maquina</h3>
+                <div class="carton">
+                    <!-- Insertar aqui los numeros del carton, carton conformado por 12 numeros
+                    La clase de inicio para el carton es ->num_carton
+                    Una vez salida la bola la clase es -> num_carton--jugado
+                -->
+
+            </section>
+            <section class="botonera section" id="botonera">
+                <button class="iniciar__juego" id="iniciar__juego">
+                    Iniciar Juego
+                </button>
+                <button class="pedir_bola ocultar" id="pedir_bola">
+                    Pedir Bola
+                </button>
+                <button class="comprobar_juego ocultar" id="comprobar_juego">
+                    Comprobar Juego
+                </button>
+                <button class="reiniciar_juegos ocultar" id="reiniciar_juego">
+                    Reiniciar Juego
+                </button>
+                <button class="cambiar__carton" id="cambiar__carton">
+                    Cambiar Carton
+                </button>
+
+            </section>
+        </main>
+    </div>
+</body>
+
+</html>
