@@ -67,6 +67,7 @@ body {
 .bolas {
     padding: 25px;
     background-color: white;
+    margin-bottom: 5px;
     border-radius: 50%;
     font-size: 1.2rem;
     font-weight: bold;
@@ -79,10 +80,11 @@ body {
 
 .carton {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     gap: 10px;
     max-width: 300px;
     margin: 0 auto;
+    place-content: center;
 }
 
 .num_carton {
@@ -127,5 +129,5 @@ body {
     display: none;
 }
 .mostrar{
-    display: inline-block;
+    display:block;
 }
