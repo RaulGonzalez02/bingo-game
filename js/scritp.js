@@ -15,6 +15,8 @@ let portada = document.getElementById("portada")
 let mostrarInicio = document.getElementById("mostrarInicio")
 let main = document.getElementById("main")
 let tablero = document.getElementById("tablero")
+let title_jugador = document.getElementById("title_jugador")
+let title_maquina = document.getElementById("title_maquina")
 let carton_jugador = document.getElementById("carton_jugador")
 let carton_maquina = document.getElementById("carton_maquina")
 let iniciar_juego = document.getElementById("iniciar_juego")
@@ -33,17 +35,36 @@ let bolasJugador = []
 let cartonMaquina = carton_maquina.children[1]
 //let bolas maquina
 let bolasMaquina = []
-//funciones
-const mostrarJuego = () => {
-  //muestra la pantalla de juego
-  portada.classList.add("ocultar")
-  main.classList.add("mostrar")
-  //crea el tablero donde se colocan todas las bolas
-  crearTablero()
-  //crear cartones
-  crearCarton()
+//FUNCIONES
+//función para sacar una nueva bola
+const pedirBola = () => {
+  let bolasTablero = tablero.querySelectorAll(".bolas")
+  //console.log(bolasTablero);
+  //console.log(cartonJugador);
+  //console.log(cartonMaquina);
+  let random;
+  do {
+    random = Math.floor(Math.random() * bolas.length)
+  } while (bolasJugadas.some(bola => bola == bolas[random]))
+  bolasJugadas.push(bolas[random])
+
+  bolasTablero[random].classList.add("bolas__jugadas")
+  tacharBola(cartonJugador.children)
+  tacharBola(cartonMaquina.children)
+
 }
 
+//funcion para tachar las bolas de los cartones
+const tacharBola = (carton) => {
+  //console.log(carton.children[1].textContent);
+  for (const bola of bolasJugadas) {
+    for (let i = 0; i < carton.length; i++) {
+      if(bola==carton[i].textContent)
+        carton[i].classList.add("num_carton--jugado")
+    }
+  }
+
+}
 //funcion que crea el tablero
 const crearTablero = () => {
   let fragment = document.createDocumentFragment()
@@ -59,8 +80,8 @@ const crearTablero = () => {
 //funcion que crea los cartones del bingo
 const crearCarton = () => {
   //Borramos el contenido de las capas
-  cartonJugador.innerHTML=""
-  cartonMaquina.innerHTML=""
+  cartonJugador.innerHTML = ""
+  cartonMaquina.innerHTML = ""
   //vaciamos los arrays para crear los cartones
   bolasJugador = []
   bolasMaquina = []
@@ -96,6 +117,30 @@ const crearCarton = () => {
   }
   cartonMaquina.append(fragmentM)
 }
+
+//función para mostrar el juego
+const mostrarJuego = () => {
+  //muestra la pantalla de juego
+  portada.classList.add("ocultar")
+  main.classList.add("mostrar")
+  //crea el tablero donde se colocan todas las bolas
+  crearTablero()
+  //crear cartones
+  crearCarton()
+}
+
+//funcion para iniciar el juego
+const iniciarJuego = () => {
+  iniciar_juego.classList.add("ocultar")
+  cambiar_carton.classList.add("ocultar")
+
+  pedir_bola.classList.add("mostrar")
+  comprobar_juego.classList.add("mostrar")
+  //console.log(bolasJugador);
+  //console.log(bolasMaquina);
+}
 //eventos
 mostrarInicio.addEventListener("click", mostrarJuego)
 cambiar_carton.addEventListener("click", crearCarton)
+iniciar_juego.addEventListener("click", iniciarJuego)
+pedir_bola.addEventListener("click", pedirBola)
