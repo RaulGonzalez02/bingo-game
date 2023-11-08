@@ -21,7 +21,6 @@ let carton_jugador = document.getElementById("carton_jugador")
 let carton_maquina = document.getElementById("carton_maquina")
 let iniciar_juego = document.getElementById("iniciar_juego")
 let pedir_bola = document.getElementById("pedir_bola")
-let comprobar_juego = document.getElementById("comprobar_juego")
 let reiniciar_juego = document.getElementById("reiniciar_juego")
 let cambiar_carton = document.getElementById("cambiar_carton")
 
@@ -31,10 +30,12 @@ let bolasJugadas = []
 let cartonJugador = carton_jugador.children[1]
 //bolas del jugador
 let bolasJugador = []
+let contJugador = 0
 //carton maquina
 let cartonMaquina = carton_maquina.children[1]
 //let bolas maquina
 let bolasMaquina = []
+let contMaquina = 0
 //FUNCIONES
 //función para sacar una nueva bola
 const pedirBola = () => {
@@ -51,7 +52,8 @@ const pedirBola = () => {
   bolasTablero[random].classList.add("bolas__jugadas")
   tacharBola(cartonJugador.children)
   tacharBola(cartonMaquina.children)
-
+  comprobarMaquina(cartonMaquina.children)
+  comprobarJugador(cartonJugador.children)
 }
 
 //funcion para tachar las bolas de los cartones
@@ -59,11 +61,36 @@ const tacharBola = (carton) => {
   //console.log(carton.children[1].textContent);
   for (const bola of bolasJugadas) {
     for (let i = 0; i < carton.length; i++) {
-      if(bola==carton[i].textContent)
+      if (bola == carton[i].textContent)
         carton[i].classList.add("num_carton--jugado")
     }
   }
-
+}
+//funcion comprobar carton maquina
+const comprobarMaquina = (cartonM) => {
+  contMaquina = 0
+  for (let numero of cartonM) {
+    if (numero.classList.contains("num_carton--jugado")) {
+      contMaquina++
+      //console.log(contMaquina);
+    }
+    if (contMaquina == 12) {
+      finalizarJuego()
+    }
+  }
+}
+//funcion comprobar carton jugador
+const comprobarJugador = (cartonJ) => {
+  contJugador = 0
+  for (let numero of cartonJ) {
+    if (numero.classList.contains("num_carton--jugado")) {
+      contJugador++
+      //console.log(contMaquina);
+    }
+    if (contJugador == 12) {
+      finalizarJuego()
+    }
+  }
 }
 //funcion que crea el tablero
 const crearTablero = () => {
@@ -133,14 +160,37 @@ const mostrarJuego = () => {
 const iniciarJuego = () => {
   iniciar_juego.classList.add("ocultar")
   cambiar_carton.classList.add("ocultar")
-
   pedir_bola.classList.add("mostrar")
-  comprobar_juego.classList.add("mostrar")
   //console.log(bolasJugador);
   //console.log(bolasMaquina);
+}
+//finalizar Juego
+const finalizarJuego = () => {
+  pedir_bola.classList.remove("mostrar")
+  reiniciar_juego.classList.add("mostrar")
+  if (contJugador == 12) {
+    title_jugador.textContent = "GANADORR!!!!"
+    title_jugador.classList.add("title-ganador")
+  }
+  if (contMaquina == 12) {
+    title_maquina.textContent = "GANADORR!!!!"
+    title_maquina.classList.add("title-ganador")
+  }
+}
+//funcion para reiniciar el juego
+const reiniciarJuego = () => {
+  reiniciar_juego.classList.remove("mostrar")
+  cambiar_carton.classList.remove("ocultar")
+  iniciar_juego.classList.remove("ocultar")
+  bolasJugadas = []
+  tablero.innerHTML = ""
+  title_jugador.textContent = ""
+  title_maquina.textContent = ""
+  mostrarJuego()
 }
 //eventos
 mostrarInicio.addEventListener("click", mostrarJuego)
 cambiar_carton.addEventListener("click", crearCarton)
 iniciar_juego.addEventListener("click", iniciarJuego)
 pedir_bola.addEventListener("click", pedirBola)
+reiniciar_juego.addEventListener("click", reiniciarJuego)
